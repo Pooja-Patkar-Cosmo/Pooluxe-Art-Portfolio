@@ -1,0 +1,683 @@
+/* Reset & basic setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f7f3ed; /* Warm light beige background */
+    color: #4a4238;           /* Soft dark brownish tone */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header & Horizontal Navigation */
+.navbar {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #7d6b56;
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.3rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #5d5345;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background-color: #ebe3d5;
+    color: #2b241c;
+}
+
+.nav-links .nav-order-btn {
+    background-color: #7d6b56;
+    color: #ffffff !important;
+    padding: 0.5rem 1.1rem;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.nav-links .nav-order-btn:hover {
+    background-color: #615241;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    flex: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 3rem 1.5rem;
+}
+
+.section {
+    margin-bottom: 5rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: #43382c;
+    margin-bottom: 0.5rem;
+}
+
+.section-header p {
+    color: #7d6b56;
+    font-size: 1rem;
+}
+
+/* 1. Masterpieces of the Month (3 Containers in 9:16 Ratio) */
+.masterpiece-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    margin-bottom: 3.5rem;
+}
+
+.masterpiece-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(93, 83, 69, 0.08);
+    border: 1px solid #ebd9c8;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.masterpiece-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(93, 83, 69, 0.15);
+}
+
+.masterpiece-card .aspect-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    background-color: #ebe3d5;
+}
+
+.masterpiece-card .aspect-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.masterpiece-card:hover .aspect-wrapper img {
+    transform: scale(1.04);
+}
+
+.masterpiece-info {
+    padding: 1.2rem;
+    text-align: center;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.masterpiece-info h3 {
+    font-size: 1.1rem;
+    color: #43382c;
+}
+
+.masterpiece-info .badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #7d6b56;
+    background-color: #f7f3ed;
+    border: 1px solid #ebd9c8;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+}
+
+/* Artist Intro Card */
+.artist-intro-card {
+    background-color: #ffffff;
+    border: 1px solid #ebd9c8;
+    border-radius: 14px;
+    padding: 2.2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    box-shadow: 0 6px 18px rgba(93, 83, 69, 0.05);
+}
+
+.artist-avatar {
+    flex-shrink: 0;
+}
+
+.artist-avatar img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ebe3d5;
+    display: block;
+}
+
+.artist-intro-text h3 {
+    font-size: 1.5rem;
+    color: #43382c;
+    margin-bottom: 0.2rem;
+}
+
+.artist-intro-text h4 {
+    font-size: 1.05rem;
+    color: #7d6b56;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.artist-intro-text p {
+    color: #6d6254;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+}
+
+.artist-intro-text .cta-text {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.cta-link {
+    display: inline-block;
+    color: #7d6b56;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.cta-link:hover {
+    color: #43382c;
+    transform: translateX(3px);
+}
+
+/* Dedicated Brand Tagline Container */
+.brand-tagline-container {
+    background-color: #ffffff;
+    border: 1px solid #ebd9c8;
+    border-radius: 12px;
+    padding: 1.8rem 2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(93, 83, 69, 0.04);
+}
+
+.brand-tagline-container::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: #cbb89d;
+    margin: 0 auto 1rem auto;
+}
+
+.tagline-quote {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: #5d5345;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+}
+
+/* Gallery Grids */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+}
+
+.art-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(93, 83, 69, 0.07);
+    border: 1px solid #ebd9c8;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.art-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(93, 83, 69, 0.12);
+}
+
+.art-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+    background-color: #ebe3d5;
+}
+
+.art-info {
+    padding: 1rem;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.art-info h3 {
+    font-size: 1.05rem;
+    color: #43382c;
+}
+
+/* 5. About Me Section */
+.about-card {
+    background-color: #ffffff;
+    border: 1px solid #ebd9c8;
+    border-radius: 16px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    box-shadow: 0 8px 24px rgba(93, 83, 69, 0.06);
+}
+
+.about-top-row {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.about-half {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-photo-wrapper img.about-portrait {
+    width: 100%;
+    height: 340px;
+    border-radius: 14px;
+    object-fit: cover;
+    box-shadow: 0 6px 16px rgba(93, 83, 69, 0.08);
+    border: 1px solid #ebd9c8;
+    display: block;
+}
+
+/* Signature frame filling its entire rectangle */
+.about-signature-wrapper {
+    background-color: #ffffff;
+    border: 1px dashed #dfd4c4;
+    border-radius: 14px;
+    height: 340px;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 16px rgba(93, 83, 69, 0.08);
+}
+
+.about-signature-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-summary {
+    border-top: 1px solid #f0e6da;
+    padding-top: 2rem;
+}
+
+.about-summary h3 {
+    font-size: 1.5rem;
+    color: #43382c;
+    margin-bottom: 1rem;
+}
+
+.about-summary p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #5d5345;
+    margin-bottom: 1.2rem;
+}
+
+.about-summary p:last-child {
+    margin-bottom: 0;
+}
+
+/* About Contact Bar */
+.about-contact-bar {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #faf7f2;
+    border: 1px solid #ebd9c8;
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.2rem;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.contact-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #7d6b56;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contact-email {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #43382c;
+    text-decoration: underline;
+    text-decoration-color: #cbb89d;
+    transition: color 0.2s ease;
+}
+
+.contact-email:hover {
+    color: #7d6b56;
+}
+
+.contact-text {
+    font-size: 1rem;
+    color: #5d5345;
+}
+
+/* 6. Custom Orders & Prints Section */
+.orders-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.order-box {
+    background-color: #ffffff;
+    border: 1px solid #ebd9c8;
+    border-radius: 16px;
+    padding: 2.2rem;
+    box-shadow: 0 6px 18px rgba(93, 83, 69, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.order-box h3 {
+    font-size: 1.4rem;
+    color: #43382c;
+    margin-bottom: 0.5rem;
+}
+
+.order-box .box-desc {
+    font-size: 0.95rem;
+    color: #7d6b56;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Commission Form Styling */
+.clean-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: auto;
+}
+
+.clean-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.clean-form label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #43382c;
+}
+
+.clean-form input,
+.clean-form select {
+    padding: 0.75rem 0.9rem;
+    border: 1px solid #ebd9c8;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: #faf7f2;
+    color: #43382c;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.clean-form input:focus,
+.clean-form select:focus {
+    border-color: #7d6b56;
+    background-color: #ffffff;
+}
+
+.primary-btn {
+    background-color: #7d6b56;
+    color: #ffffff;
+    border: none;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.primary-btn:hover {
+    background-color: #615241;
+}
+
+/* Print & Download Pricing Cards */
+.pricing-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.print-tier {
+    background-color: #faf7f2;
+    border: 1px solid #ebd9c8;
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.print-tier h4 {
+    font-size: 1rem;
+    color: #43382c;
+    margin-bottom: 0.2rem;
+}
+
+.print-tier .dim {
+    font-size: 0.8rem;
+    color: #8c7e6e;
+    display: block;
+}
+
+.print-tier .tier-price {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #7d6b56;
+    white-space: nowrap;
+}
+
+.print-note {
+    font-size: 0.85rem;
+    color: #9c8e7e;
+    font-style: italic;
+    line-height: 1.5;
+    margin-top: auto;
+}
+
+.form-feedback {
+    display: none;
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.form-feedback.success {
+    display: block;
+    background-color: #e6f4ea;
+    color: #137333;
+    border: 1px solid #b7e1cd;
+}
+
+/* Fullscreen Modal / Lightbox */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 25, 20, 0.92);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal-content {
+    max-width: 85%;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+    animation: zoom 0.3s ease;
+}
+
+.modal-caption {
+    margin-top: 1rem;
+    color: #f7f3ed;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: #f7f3ed;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #cbb89d;
+}
+
+@keyframes zoom {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Footer */
+.footer {
+    background-color: #ece4d8;
+    text-align: center;
+    padding: 1.3rem;
+    font-size: 0.85rem;
+    color: #756a5c;
+    border-top: 1px solid #dfd4c4;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+    }
+    .masterpiece-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .artist-intro-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-top-row {
+        flex-direction: column;
+    }
+    .about-photo-wrapper img.about-portrait {
+        max-width: 240px;
+        height: auto;
+    }
+    .about-signature-wrapper {
+        width: 100%;
+        height: 220px;
+    }
+    .orders-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
